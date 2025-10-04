@@ -1,0 +1,37 @@
+@use './styles/variables' as *
+
+// Import page-specific styles
+@use './styles/homepage.sass'
+
+.navbar
+  position: fixed
+  top: 0
+  left: 0
+  right: 0
+  width: 100%
+  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1)
+  justify-content: flex-end
+  display: flex
+  z-index: 1000
+
+.main
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-top: 64px
+  height: auto
+  padding: 0
+
+.LoginForm
+  display: flex
+  flex-direction: column
+  gap: 10px
+  align-items: center
+  justify-content: center
+
+.GoodPage
+  display: flex
+  flex-wrap: wrap
+  gap: 10px
+  align-items: center
+  justify-content: center
