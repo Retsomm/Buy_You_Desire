@@ -1,26 +1,25 @@
 import React from "react";
-import { Button, Typography, Row, Col, Space } from "antd";
+import { Button, Typography, Space } from "antd";
 import { ShoppingCartOutlined, UserOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import GoodCard from "../components/GoodCard";
-import type { GoodItem } from "../types/good";
+import type { GoodItem } from "./types/good";
+import { useAppDispatch } from "../hooks/redux";
+import { addToCart } from "../store/actions/cartActions";
 import goodData from "../data/goodData.json";
-
+import "./HomePage.sass";
 const { Title, Paragraph } = Typography;
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   // 從 goodData 中取前 4 個作為熱門商品
   const featuredProducts = goodData.slice(0, 4);
 
   const handleAddToCart = (product: GoodItem) => {
-    // TODO: 加入購物車邏輯
+    dispatch(addToCart(product));
     console.log("Add to cart:", product);
-  };
-
-  const handleViewDetails = (productId: number) => {
-    navigate(`/good?id=${productId}`);
   };
 
   return (
@@ -60,26 +59,24 @@ const Home: React.FC = () => {
           精選最受歡迎的自己，讓你的人生有更多可能性
         </Paragraph>
 
-        <Row gutter={[24, 24]} className="products-grid">
+        <div className="goodList">
           {featuredProducts.map((product) => (
-            <Col xs={24} sm={12} lg={6} key={product.id}>
-              <GoodCard
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                tags={product.tags}
-                gradient={product.gradient}
-                onFavorite={() => console.log("Favorite:", product)}
-                onDetails={() => handleViewDetails(product.id)}
-                onAddToCart={() => handleAddToCart(product)}
-              />
-            </Col>
+            <GoodCard
+              key={product.id}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              tags={product.tags}
+              gradient={product.gradient}
+              onAddToCart={() => handleAddToCart(product)}
+              className="homePageGoodCard"
+            />
           ))}
-        </Row>
+        </div>
       </div>
 
       {/* Call to Action */}
-      <div className="cta-section">
+      <div className="footer">
         <Title level={2}>準備好成為更好的自己了嗎？</Title>
         <Paragraph>
           每一個購買都是對未來的投資。選擇你想要的自己，讓夢想成為現實。

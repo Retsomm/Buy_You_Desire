@@ -1,0 +1,151 @@
+@import '../styles/_variables.sass'
+
+.shop-cart-container
+    padding: 24px
+    max-width: 1200px
+    margin: 0 auto
+
+.empty-cart-container
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    padding: 60px 20px
+    text-align: center
+
+.cart-header
+    margin-bottom: 24px
+    border-bottom: 1px solid $platinum
+    padding-bottom: 16px
+
+.cart-item
+    padding: 16px 0
+    border-bottom: 1px solid $champagne-pink
+
+    &:last-child
+        border-bottom: none
+
+.cart-item-content
+    display: flex
+    align-items: flex-start
+    gap: 16px
+
+.cart-item-info
+    flex: 1
+    min-width: 0
+
+.cart-item-title
+    font-size: 16px
+    font-weight: 600
+    margin-bottom: 8px
+    color: $text-on-light
+
+.cart-item-description
+    color: $text-secondary
+    margin-bottom: 12px
+    line-height: 1.5
+
+.cart-item-tags
+    display: flex
+    flex-wrap: wrap
+    gap: 6px
+    margin-top: 8px
+
+.cart-item-tag
+    background: linear-gradient(135deg, $cherry-blossom-pink 0%, $mountbatten-pink 100%)
+    color: $text-on-dark
+    padding: 2px 8px
+    border-radius: 12px
+    font-size: 12px
+    font-weight: 500
+
+.cart-item-actions
+    display: flex
+    flex-direction: column
+    align-items: flex-end
+    gap: 12px
+    min-width: 120px
+
+.cart-item-price
+    font-size: 18px
+    font-weight: 600
+    color: $text-on-light
+    margin-bottom: 8px
+
+.cart-item-quantity
+    display: flex
+    align-items: center
+    gap: 8px
+
+.cart-summary
+    background: $champagne-pink
+    padding: 20px
+    border-radius: 8px
+    margin: 24px 0
+    border: 1px solid $platinum
+
+.cart-summary-row
+    display: flex
+    justify-content: space-between
+    align-items: center
+    margin-bottom: 8px
+
+    &:last-child
+        margin-bottom: 0
+        padding-top: 12px
+        border-top: 1px solid $platinum
+
+.cart-summary-label
+    color: $text-secondary
+    font-size: 14px
+
+.cart-summary-value
+    font-weight: 600
+    color: $text-on-light
+
+.cart-summary-total
+    font-size: 20px
+    color: $mountbatten-pink
+
+.cart-footer
+    display: flex
+    justify-content: flex-end
+    gap: 12px
+    margin-top: 24px
+    padding-top: 20px
+    border-top: 1px solid $platinum
+
+.remove-button
+    color: $mountbatten-pink !important
+
+    &:hover
+        background-color: rgba($mountbatten-pink, 0.1) !important
+        border-color: rgba($mountbatten-pink, 0.3) !important
+
+// Responsive design
+@media (max-width: 768px)
+.shop-cart-container
+    padding: 16px
+
+.cart-item-content
+    flex-direction: column
+    gap: 12px
+
+.cart-item-actions
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    width: 100%
+
+.cart-footer
+    flex-direction: column
+
+    .ant-btn
+        width: 100%
+
+@media (max-width: 480px)
+.cart-summary
+    padding: 16px
+
+.cart-summary-total
+    font-size: 18px

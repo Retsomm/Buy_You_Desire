@@ -1,4 +1,4 @@
-@use './variables' as *
+@use '../styles/variables' as *
 
 // HomePage Styles
 
@@ -8,7 +8,7 @@
     position: relative
     margin: 0 auto
     background: linear-gradient(180deg, $champagne-pink 0%, $platinum 100%)
-
+  
 .hero-section
     display: flex
     align-items: center
@@ -21,7 +21,11 @@
         flex-direction: column
         text-align: center
         padding: 60px 5% 40px
-
+.goodList
+    display: flex
+    flex-wrap: wrap
+    gap: 10px
+    justify-content: center
 .hero-content
     flex: 1
     max-width: 600px
@@ -140,12 +144,16 @@
     display: inline-block
     border: 2px solid $text-on-light
 
-.cta-section
+.footer
     padding: 80px 5%
     text-align: center
     background: linear-gradient(135deg, $cherry-blossom-pink 0%, $mountbatten-pink 100%)
     color: white
-
+    height: 360px
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
     .ant-typography
         color: white !important
 

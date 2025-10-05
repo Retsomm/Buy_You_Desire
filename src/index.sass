@@ -1,26 +1,18 @@
 @use './styles/variables' as *
-
-// Import page-specific styles
-@use './styles/homepage.sass'
-
-.navbar
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  width: 100%
-  box-shadow: 0 2px 4px rgba(3, 3, 3, 0.1)
-  justify-content: flex-end
-  display: flex
-  z-index: 1000
+*
+  padding: 0
+  margin: 0
+  box-sizing: border-box
+  letter-spacing: .1rem
 
 .main
   display: flex
   justify-content: center
   align-items: center
-  margin-top: 64px
+  padding-top: 64px
   height: auto
-  padding: 0
+  min-height: 100vh
+  
 
 .LoginForm
   display: flex

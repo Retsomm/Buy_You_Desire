@@ -6,7 +6,7 @@ import {
   DownOutlined,
   UpOutlined,
 } from "@ant-design/icons";
-import type { GoodItem } from "../types/good";
+import type { GoodItem } from "../pages/types/good";
 import { useProductFilter } from "../hooks/useProductFilter";
 import "./ProductFilter.sass";
 
@@ -47,23 +47,21 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
         ghost
         expandIcon={({ isActive }) =>
           isActive ? (
-            <UpOutlined className="product-filter__expand-icon" />
+            <UpOutlined className="expand-icon" />
           ) : (
-            <DownOutlined className="product-filter__expand-icon" />
+            <DownOutlined className="expand-icon" />
           )
         }
         items={[
           {
             key: "filter",
             label: (
-              <div className="product-filter__collapse-label">
-                <Text strong className="product-filter__title-text">
-                  <FilterOutlined className="product-filter__title-icon" />
+              <div className="collapse-label">
+                <Text strong className="title-text">
+                  <FilterOutlined className="title-icon" />
                   標籤篩選
                   {selectedTags.length > 0 && (
-                    <span className="product-filter__title-badge">
-                      {selectedTags.length}
-                    </span>
+                    <span className="title-badge">{selectedTags.length}</span>
                   )}
                 </Text>
                 {selectedTags.length > 0 && (
@@ -75,7 +73,7 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
                       clearAllFilters();
                     }}
                     type="text"
-                    className="product-filter__clear-button"
+                    className="clear-button"
                   >
                     清除篩選
                   </Button>
@@ -83,21 +81,21 @@ const ProductFilter: React.FC<ProductFilterProps> = ({
               </div>
             ),
             children: (
-              <div className="product-filter__content">
+              <div className="filter-content">
                 <Space size={[8, 8]} wrap>
                   {allTags.map((tag) => (
                     <Tag.CheckableTag
                       key={tag}
                       checked={selectedTags.includes(tag)}
                       onChange={() => handleTagClick(tag)}
-                      className="product-filter__tag"
+                      className="filter-tag"
                     >
                       {tag}
                     </Tag.CheckableTag>
                   ))}
                 </Space>
                 {selectedTags.length > 0 && (
-                  <div className="product-filter__summary">
+                  <div className="filter-summary">
                     <Text type="secondary">
                       已選擇標籤：{selectedTags.join(", ")} | 符合條件的商品：
                       {filteredCount} 個

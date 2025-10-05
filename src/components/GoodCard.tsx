@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  HeartOutlined,
-  InfoCircleOutlined,
   ShoppingCartOutlined,
 } from "@ant-design/icons";
 import { Card, Tag, Typography } from "antd";
@@ -16,18 +14,13 @@ interface GoodCardProps {
   price: string;
   tags: string[];
   gradient: string;
-  onFavorite?: () => void;
-  onDetails?: () => void;
   onAddToCart?: () => void;
+  className?: string;
 }
-
+//.ant-card-actions 是 Ant Design 自動生成的：當你使用 Card 組件的 actions 屬性時，Ant Design 會自動創建一個帶有 ant-card-actions 類名的容器。
 const actions = (
-  onFavorite?: () => void,
-  onDetails?: () => void,
   onAddToCart?: () => void
 ): React.ReactNode[] => [
-  <HeartOutlined key="favorite" onClick={onFavorite} />,
-  <InfoCircleOutlined key="details" onClick={onDetails} />,
   <ShoppingCartOutlined key="addToCart" onClick={onAddToCart} />,
 ];
 
@@ -38,42 +31,34 @@ const GoodCard: React.FC<GoodCardProps> = ({
   price,
   tags,
   gradient,
-  onFavorite,
-  onDetails,
   onAddToCart,
 }) => {
   return (
     <Card
       loading={loading}
-      actions={actions(onFavorite, onDetails, onAddToCart)}
+      actions={actions( onAddToCart)}
       style={{
         background: gradient,
       }}
-      className="product-card"
+      className="goodCard"
     >
       <Card.Meta
         title={
-          <Text
-            strong
-            className="card-title"
-            style={{ writingMode: "horizontal-tb", textOrientation: "mixed" }}
-          >
+          <Text strong className="cardTitle">
             {title}
           </Text>
         }
         description={
-          <div
-            style={{ writingMode: "horizontal-tb", textOrientation: "mixed" }}
-          >
-            <Paragraph className="card-description">{description}</Paragraph>
-            <div className="card-tags-container">
+          <div>
+            <Paragraph className="cardDescription">{description}</Paragraph>
+            <div className="cardTagsContainer">
               {tags.map((tag) => (
-                <Tag key={tag} className="card-tag">
+                <Tag key={tag} className="cardTag">
                   {tag}
                 </Tag>
               ))}
             </div>
-            <Title level={4} className="card-price">
+            <Title level={4} className="cardPrice">
               {price}
             </Title>
           </div>

@@ -1,5 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider, theme } from "antd";
+import { Provider } from "react-redux";
+import { store } from "./store";
 import Layout from "./components/Layout";
 import { lazy, Suspense } from "react";
 import LoadingSpinner from "./components/LoadingSpinner";
@@ -8,11 +10,8 @@ import "./App.css";
 
 const Home = lazy(() => import("./pages/HomePage"));
 const Good = lazy(() => import("./pages/GoodPage"));
-const Login = lazy(() => import("./pages/LoginPage"));
-const Profile = lazy(() => import("./pages/ProfilePage"));
 const ShopCart = lazy(() => import("./pages/ShopCartPage"));
-const Bill = lazy(() => import("./pages/BillPage"));
-
+const Bill = lazy(() => import("./pages/BillPage.tsx"));
 // 自定義主題配置 - 只使用七種基本顏色
 const customTheme = {
   algorithm: theme.defaultAlgorithm,
@@ -113,59 +112,47 @@ const customTheme = {
 
 export default function App() {
   return (
-    <ConfigProvider theme={customTheme}>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Home />
-              </Suspense>
-            }
-          />
-          <Route
-            path="good"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Good />
-              </Suspense>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Login />
-              </Suspense>
-            }
-          />
-          <Route
-            path="shopCart"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <ShopCart />
-              </Suspense>
-            }
-          />
-          <Route
-            path="profile"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Profile />
-              </Suspense>
-            }
-          />
-          <Route
-            path="bill"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Bill />
-              </Suspense>
-            }
-          />
-        </Route>
-      </Routes>
-    </ConfigProvider>
+    <Provider store={store}>
+      <ConfigProvider theme={customTheme}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route
+              index
+              element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Home />
+                </Suspense>
+              }
+            />
+            <Route
+              path="good"
+              element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Good />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="shopCart"
+              element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <ShopCart />
+                </Suspense>
+              }
+            />
+
+            <Route
+              path="bill"
+              element={
+                <Suspense fallback={<LoadingSpinner />}>
+                  <Bill />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Routes>
+      </ConfigProvider>
+    </Provider>
   );
 }
