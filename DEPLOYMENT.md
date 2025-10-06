@@ -4,21 +4,42 @@
 
 ## 🚀 GitHub Pages 部署
 
-### 自動部署 (推薦)
+### 重要注意事項
+- 確保 GitHub 倉庫是**公開的** (public)
+- 或者從 `package.json` 移除 `"private": true` 設定
 
-1. **推送到 GitHub**：
+### 首次設定步驟
 
+1. **設定 package.json**：
+   ```json
+   {
+     "name": "buy-you-desire",
+     "homepage": "https://Retsomm.github.io/Buy_You_Desire",
+     "version": "0.0.0"
+   }
+   ```
+
+2. **手動部署創建 gh-pages 分支**：
+   ```bash
+   npm run deploy
+   ```
+
+3. **推送到 GitHub**：
    ```bash
    git add .
    git commit -m "Setup GitHub Pages deployment"
    git push origin main
    ```
 
-2. **啟用 GitHub Pages**：
-   - 前往 GitHub 倉庫設定頁面
-   - 點擊 "Pages" 選項
-   - Source 選擇 "GitHub Actions"
-   - 專案會自動部署到 `https://Retsomm.github.io/Buy_You_Desire/`
+4. **在 GitHub 設定 Pages**：
+   - 前往 GitHub 倉庫 → Settings → Pages
+   - Source 選擇 "Deploy from a branch"
+   - Branch 選擇 "gh-pages" / (root)
+   - 點擊 Save
+
+### 自動部署 (設定完成後)
+
+每次推送到 `main` 分支會自動觸發部署
 
 ### 手動部署
 
