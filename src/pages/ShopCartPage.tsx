@@ -121,10 +121,8 @@ const ShopCart: React.FC = () => {
         }, 100);
       }
 
-      // 強制重置頁面滾動位置
-      if (window.scrollTo) {
-        window.scrollTo(0, 0);
-      }
+      // 移除強制滾動到頂部的代碼，保持用戶當前的滾動位置
+      // 這樣用戶就能正常滾動到底部使用結帳按鈕
     }
   };
 
