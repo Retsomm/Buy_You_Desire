@@ -1,7 +1,5 @@
 import React from "react";
-import {
-  ShoppingCartOutlined,
-} from "@ant-design/icons";
+import { ShoppingCartOutlined } from "@ant-design/icons";
 import { Card, Tag, Typography } from "antd";
 import "./GoodCard.sass";
 
@@ -18,9 +16,7 @@ interface GoodCardProps {
   className?: string;
 }
 //.ant-card-actions 是 Ant Design 自動生成的：當你使用 Card 組件的 actions 屬性時，Ant Design 會自動創建一個帶有 ant-card-actions 類名的容器。
-const actions = (
-  onAddToCart?: () => void
-): React.ReactNode[] => [
+const actions = (onAddToCart?: () => void): React.ReactNode[] => [
   <ShoppingCartOutlined key="addToCart" onClick={onAddToCart} />,
 ];
 
@@ -33,13 +29,15 @@ const GoodCard: React.FC<GoodCardProps> = ({
   gradient,
   onAddToCart,
 }) => {
+  const cardStyle = {
+    background: gradient,
+  };
+
   return (
     <Card
       loading={loading}
-      actions={actions( onAddToCart)}
-      style={{
-        background: gradient,
-      }}
+      actions={actions(onAddToCart)}
+      style={cardStyle}
       className="goodCard"
     >
       <Card.Meta

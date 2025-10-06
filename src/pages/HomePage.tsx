@@ -19,7 +19,6 @@ const Home: React.FC = () => {
 
   const handleAddToCart = (product: GoodItem) => {
     dispatch(addToCart(product));
-    console.log("Add to cart:", product);
   };
 
   return (
@@ -42,9 +41,7 @@ const Home: React.FC = () => {
             >
               開始購物
             </Button>
-            <Button size="large" onClick={() => navigate("/profile")}>
-              了解更多
-            </Button>
+            
           </Space>
         </div>
         <div className="banner"></div>

@@ -1,0 +1,105 @@
+@use '../styles/variables' as *
+
+.bill-page-container
+    padding: 40px 20px
+    max-width: 800px
+    margin: 0 auto
+    text-align: center
+
+.empty-bill-container
+    display: flex
+    justify-content: center
+    align-items: center
+    min-height: 50vh
+    flex-direction: column
+
+.empty-bill-button
+    margin-top: 16px
+
+.bill-card
+    border-radius: 16px
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1)
+    background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%)
+
+.congratulation-title
+    color: #2d3436
+    margin-bottom: 20px
+    font-size: 2.5rem
+
+.become-title
+    color: #636e72
+    margin-bottom: 30px
+    font-weight: normal
+
+.product-info-container
+    background: rgba(255, 255, 255, 0.8)
+    padding: 20px
+    border-radius: 12px
+    margin: 20px 0
+
+.product-name-text
+    font-size: 1.2rem
+    color: #2d3436
+    font-weight: bold
+    line-height: 1.6
+
+.human-text
+    font-size: 1.2rem
+    color: #2d3436
+    font-weight: bold
+
+.message-paragraph
+    font-size: 1rem
+    color: #636e72
+    line-height: 1.8
+    margin-top: 30px
+    text-align: left
+    background: rgba(255, 255, 255, 0.6)
+    padding: 20px
+    border-radius: 8px
+
+.bill-actions-container
+    margin-top: 40px
+
+.continue-shopping-button
+    margin-right: 16px
+    border-radius: 8px
+    height: 48px
+    padding-left: 32px
+    padding-right: 32px
+
+.back-home-button
+    border-radius: 8px
+    height: 48px
+    padding-left: 32px
+    padding-right: 32px
+
+// Responsive design
+@media (max-width: 768px)
+    .bill-page-container
+        padding: 20px 16px
+
+    .congratulation-title
+        font-size: 2rem
+
+    .bill-actions-container
+        .continue-shopping-button,
+        .back-home-button
+            width: 100%
+            margin-right: 0
+            margin-bottom: 12px
+
+@media (max-width: 480px)
+    .congratulation-title
+        font-size: 1.8rem
+
+    .become-title
+        font-size: 1.2rem
+
+    .product-name-text,
+    .human-text
+        font-size: 1rem
+
+    .message-paragraph
+        font-size: 0.9rem
+        padding: 16px

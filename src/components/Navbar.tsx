@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [current, setCurrent] = useState(location.pathname);
-  const totalQuantity = useAppSelector((state) => state.totalQuantity);
+  const totalQuantity = useAppSelector((state) => state.cart.totalQuantity);
 
   useEffect(() => {
     window.scrollTo(0, 0);

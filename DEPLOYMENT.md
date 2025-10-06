@@ -5,12 +5,14 @@
 ## 🚀 GitHub Pages 部署
 
 ### 重要注意事項
+
 - 確保 GitHub 倉庫是**公開的** (public)
 - 或者從 `package.json` 移除 `"private": true` 設定
 
 ### 首次設定步驟
 
 1. **設定 package.json**：
+
    ```json
    {
      "name": "buy-you-desire",
@@ -20,11 +22,13 @@
    ```
 
 2. **手動部署創建 gh-pages 分支**：
+
    ```bash
    npm run deploy
    ```
 
 3. **推送到 GitHub**：
+
    ```bash
    git add .
    git commit -m "Setup GitHub Pages deployment"
@@ -41,15 +45,38 @@
 
 每次推送到 `main` 分支會自動觸發部署
 
-### 手動部署
+### 路由問題解決方案
 
-```bash
-# 建構專案
-npm run build
+如果遇到 "No routes matched location" 錯誤：
 
-# 部署到 GitHub Pages
-npm run deploy
-```
+1. **確認 BrowserRouter 設定正確**：
+
+   ```tsx
+   // src/main.tsx
+   <BrowserRouter basename="/Buy_You_Desire">
+     <App />
+   </BrowserRouter>
+   ```
+
+2. **確認 Vite 配置正確**：
+
+   ```ts
+   // vite.config.ts
+   export default defineConfig({
+     base: "/Buy_You_Desire/",
+     // ...
+   });
+   ```
+
+3. **使用相對路徑導航**：
+
+   ```tsx
+   // 正確 ✅
+   navigate("/shopCart");
+
+   // 錯誤 ❌
+   navigate("/Buy_You_Desire/shopCart");
+   ```
 
 ## 🛠️ 開發環境
 
@@ -161,6 +188,7 @@ src/
 - ✅ 修正 Redux 狀態管理結構
 - ✅ 優化建構配置
 - ✅ 加入代碼分割
+- ✅ 修正 React Router 基礎路徑配置
 
 ## 🌐 部署網址
 

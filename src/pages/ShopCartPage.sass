@@ -13,6 +13,9 @@
     padding: 60px 20px
     text-align: center
 
+.empty-cart-button
+    margin-top: 16px
+
 .cart-header
     margin-bottom: 24px
     border-bottom: 1px solid $platinum
@@ -29,6 +32,7 @@
     display: flex
     align-items: flex-start
     gap: 16px
+    width: 640px
 
 .cart-item-info
     flex: 1
@@ -115,37 +119,40 @@
     padding-top: 20px
     border-top: 1px solid $platinum
 
-.remove-button
-    color: $mountbatten-pink !important
-
+.ant-btn
+    height: 48px
     &:hover
-        background-color: rgba($mountbatten-pink, 0.1) !important
-        border-color: rgba($mountbatten-pink, 0.3) !important
-
+        color: $platinum !important
+        background-color: rgba($mountbatten-pink, 0.9) !important
+        border-color: rgba($mountbatten-pink, 0.9) !important
 // Responsive design
 @media (max-width: 768px)
-.shop-cart-container
-    padding: 16px
+    .shop-cart-container
+        padding: 16px
 
-.cart-item-content
-    flex-direction: column
-    gap: 12px
+    .cart-item-content
+        flex-direction: column
+        gap: 12px
+        width: 420px
 
-.cart-item-actions
-    flex-direction: row
-    align-items: center
-    justify-content: space-between
-    width: 100%
-
-.cart-footer
-    flex-direction: column
-
-    .ant-btn
+    .cart-item-actions
+        flex-direction: row
+        align-items: center
+        justify-content: space-between
         width: 100%
 
-@media (max-width: 480px)
-.cart-summary
-    padding: 16px
+    .cart-footer
+        flex-direction: column
 
-.cart-summary-total
-    font-size: 18px
+        .ant-btn
+            width: 100%
+
+@media (max-width: 480px)
+    .cart-summary
+        padding: 16px
+
+    .cart-summary-total
+        font-size: 18px
+
+    .cart-item-content
+        width: 300px
