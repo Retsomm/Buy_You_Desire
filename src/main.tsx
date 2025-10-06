@@ -9,7 +9,7 @@ import App from "./App.tsx";
 //使用 ! 告訴 TypeScript 編譯器："我確定這個值不會是 null 或 undefined"
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/Buy_You_Desire">
       <App />
     </BrowserRouter>
   </StrictMode>
