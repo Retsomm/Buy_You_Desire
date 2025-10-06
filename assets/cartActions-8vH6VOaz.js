@@ -1,1 +1,0 @@
-import{C as o,A as s,U as r,c as e}from"./index-BpZ-BleL.js";const C=a=>({type:s,payload:a}),T=a=>({type:e,payload:a}),A=(a,t)=>({type:r,payload:{id:a,quantity:t}}),y=()=>({type:o});export{C as a,y as c,T as r,A as u};
