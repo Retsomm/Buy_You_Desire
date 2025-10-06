@@ -1,7 +1,7 @@
 {
-  "name": "redux-demo",
-  "private": true,
+  "name": "buy-you-desire",
   "version": "0.0.0",
+  "homepage": "https://Retsomm.github.io/Buy_You_Desire",
   "type": "module",
   "scripts": {
     "dev": "vite",
