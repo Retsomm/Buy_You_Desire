@@ -26,9 +26,17 @@ const calculateTotalQuantity = (items: CartItem[]): number => {
 
 // Load initial state from localStorage or use default
 const getInitialState = (): CartState => {
-    const savedCart = loadCartFromStorage();
-    if (savedCart) {
-        return savedCart;
+    try {
+        const savedCart = loadCartFromStorage();
+        if (savedCart && savedCart.items) {
+            return {
+                items: savedCart.items,
+                totalQuantity: calculateTotalQuantity(savedCart.items),
+                totalPrice: calculateTotalPrice(savedCart.items)
+            };
+        }
+    } catch (error) {
+        console.warn('Failed to load cart from storage:', error);
     }
 
     return {

@@ -1,34 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Typography, List, Button, InputNumber, Empty } from "antd";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import { useAppSelector, useAppDispatch } from "../hooks/redux";
 import {
-  removeFromCart,
-  updateCartItemQuantity,
-  clearCart,
-} from "../store/actions/cartActions";
+  removeFromCartWithMessage,
+  updateCartItemQuantityWithMessage,
+  clearCartWithMessage,
+  checkoutWithMessage,
+} from "../store/actions/cartThunks";
 import "./ShopCartPage.sass";
 
 const { Title, Text } = Typography;
 
 const ShopCart: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { items, totalQuantity, totalPrice } = useAppSelector((state) => state);
+  const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   const handleQuantityChange = (id: number, quantity: number) => {
-    if (quantity <= 0) {
-      dispatch(removeFromCart(id));
-    } else {
-      dispatch(updateCartItemQuantity(id, quantity));
-    }
+    dispatch(updateCartItemQuantityWithMessage(id, quantity));
   };
 
   const handleRemoveItem = (id: number) => {
-    dispatch(removeFromCart(id));
+    dispatch(removeFromCartWithMessage(id));
   };
 
   const handleClearCart = () => {
-    dispatch(clearCart());
+    dispatch(clearCartWithMessage());
+  };
+
+  const handleCheckout = () => {
+    setIsCheckingOut(true);
+    dispatch(checkoutWithMessage());
+
+    setTimeout(() => {
+      navigate("/bill");
+    }, 3000);
   };
 
   if (items.length === 0) {
@@ -117,8 +126,14 @@ const ShopCart: React.FC = () => {
 
       <div className="cart-footer">
         <Button onClick={handleClearCart}>清空購物車</Button>
-        <Button type="primary" size="large">
-          結帳
+        <Button
+          type="primary"
+          size="large"
+          onClick={handleCheckout}
+          loading={isCheckingOut}
+          disabled={isCheckingOut}
+        >
+          {isCheckingOut ? "處理中..." : "結帳"}
         </Button>
       </div>
     </div>

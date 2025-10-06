@@ -36,7 +36,6 @@ const Navbar: React.FC = () => {
       label: "商店",
       key: "/good",
     },
- 
   ];
 
   return (

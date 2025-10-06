@@ -7,7 +7,7 @@ import type { GoodItem } from "./types/good";
 import { useProductFilter } from "../hooks/useProductFilter";
 import { usePagination } from "../hooks/usePagination";
 import { useAppDispatch } from "../hooks/redux";
-import { addToCart } from "../store/actions/cartActions";
+import { addToCartWithMessage } from "../store/actions/cartThunks";
 import goodData from "../data/goodData.json";
 import "./GoodPage.sass";
 
@@ -33,11 +33,8 @@ const Good: React.FC = () => {
   };
 
   const handleAddToCart = (product: GoodItem) => {
-    dispatch(addToCart(product));
-    console.log("Add to cart:", product);
+    dispatch(addToCartWithMessage(product));
   };
-
-
 
   return (
     <div className="GoodPage">

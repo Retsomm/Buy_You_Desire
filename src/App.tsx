@@ -1,6 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import { ConfigProvider, theme } from "antd";
 import { Provider } from "react-redux";
+import { Toaster } from "react-hot-toast";
 import { store } from "./store";
 import Layout from "./components/Layout";
 import { lazy, Suspense } from "react";
@@ -114,6 +115,45 @@ export default function App() {
   return (
     <Provider store={store}>
       <ConfigProvider theme={customTheme}>
+        <Toaster
+          position="top-right"
+          containerStyle={{
+            top: "80px", // 導覽列高度(64px) + 額外間距(16px)
+          }}
+          gutter={8}
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: THEME_COLORS.colorBgContainer,
+              color: THEME_COLORS.colorText,
+              borderRadius: "8px",
+              boxShadow: SHADOWS.default,
+              border: `1px solid ${THEME_COLORS.colorBorder}`,
+            },
+            success: {
+              style: {
+                background: THEME_COLORS.colorSuccess,
+                color: THEME_COLORS.colorText,
+              },
+              iconTheme: {
+                primary: THEME_COLORS.colorPrimary,
+                secondary: "#fff",
+              },
+            },
+            error: {
+              style: {
+                background: THEME_COLORS.colorError,
+                color: "#fff",
+              },
+            },
+            loading: {
+              style: {
+                background: THEME_COLORS.colorInfo,
+                color: THEME_COLORS.colorText,
+              },
+            },
+          }}
+        />
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route

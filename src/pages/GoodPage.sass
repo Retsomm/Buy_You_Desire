@@ -1,4 +1,4 @@
-@use '../styles/variables' as vars
+@use '../styles/_variables' as *
 
 .GoodPage
     display: flex
@@ -6,11 +6,11 @@
 .no-products-message
     text-align: center
     padding: 48px
-    color: vars.$mountbatten-pink // 使用定義的顏色變量替代 #999
+    color: $mountbatten-pink // 使用定義的顏色變量替代 #999
 
     .no-products-text
         font-size: 16px
-        color: vars.$mountbatten-pink // 確保文字顏色一致
+        color: $mountbatten-pink // 確保文字顏色一致
 .goodList
     display: flex
     flex-wrap: wrap

@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 
 export const usePagination = <T>(
-    items: T[],//接收從filteredProducts傳來的陣列(篩選完成的商品卡片們)
+    items: T[], //接收從filteredProducts傳來的陣列(篩選完成的商品卡片們)
     itemsPerPage: number = 12
 ) => {
     const [currentPage, setCurrentPage] = useState<number>(1);
