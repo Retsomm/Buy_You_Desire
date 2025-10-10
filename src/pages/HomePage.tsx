@@ -82,7 +82,7 @@ const Home: React.FC = () => {
           type="primary"
           size="large"
           icon={<UserOutlined />}
-          onClick={() => navigate("/login")}
+          onClick={() => navigate("/good")}
         >
           立即開始
         </Button>
